@@ -93,8 +93,12 @@ WSGI_APPLICATION = 'TesisImp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.pg2',
+        'NAME': 'dl1joc99l8djg',
+        'HOST': 'ec2-34-194-123-31.compute-1.amazonaws.com',
+        'USER': 'bpblyiaqjsbtix',
+        'PASSWORD': '7eb8ec0c27b888805db1f4fe7c78db591142dd556389aa0ea6731008f5f1ed43',
+        'PORT': 5432,
     }
 }
 
