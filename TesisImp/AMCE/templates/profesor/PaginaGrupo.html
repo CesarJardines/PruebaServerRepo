@@ -1,0 +1,78 @@
+{% extends "profesor/base_mainpage.html" %}
+
+{% load static %}
+
+{% block title %}
+    AMCE - {{ grupo.grupo }}
+{% endblock %}
+
+{% block header_ctxt %}
+<div class="nav-bar-title navbar-brand"><p class="small-text">{{ grupo.materia }}</p></div>
+<a class=""></a>
+{% endblock %}
+
+{% block navbar_ctxt %}
+    <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'AMCE:ProfMisGrupos' %}">Mis Grupos</a></li>
+    <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'AMCE:ProfMisTemas' %}">Mis Temas</a></li>
+{% endblock %}
+
+{% block inner_content %}
+    <h3 class="mb-3">{{ grupo.grupo }} - {{ grupo.institucion }}</h3>
+    <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="temas-tab" data-bs-toggle="tab" data-bs-target="#temas" type="button" role="tab" aria-controls="temas" aria-selected="true">Temas</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="equipos-tab" data-bs-toggle="tab" data-bs-target="#equipos" type="button" role="tab" aria-controls="equipos" aria-selected="false">Equipos</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="temas" role="tabpanel" aria-labelledby="temas-tab">
+            </br>
+            </br>
+            <a class=" btn btn-outline-dark btn-block"   href="{% url 'AMCE:ProfAsignarTemaGrupo' codigo=codigo %}" id="asignar_tema">Asignar Tema</a>
+            </br>
+            </br>
+            <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content">
+                {% for t in temas %}
+                <div class="col mb-5">
+                    <a href="{% url 'AMCE:ProfTemaAsignado' codigo=codigo tema=t.id_tema%}">
+                        <div class="card h-100" >
+                            <!-- Detalles del tema -->
+                            <div class="card-body p-4">
+                                <div>
+                                    <h4 class="fw-bolder">{{t.nombre}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="equipos" role="tabpanel" aria-labelledby="equipos-tab">
+            </br>
+            </br>
+            <a class=" btn btn-outline-dark btn-block"   href="{% url 'AMCE:ProfCrearEquipo' codigo=codigo %}" id="crear_equipo">Crear Equipo</a>
+            </br>
+            </br>
+            <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content">
+                {% for e in equipos %}
+                <div class="col mb-3">
+                    <a href="{% url 'AMCE:ProfPaginaEquipo' codigo=codigo equipo=e.id_equipo%}">
+                        <div class="card h-100">
+                            <div class="card-body p-4">
+                                <div>
+                                    <h4 class="fw-bolder">{{ e.nombre }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

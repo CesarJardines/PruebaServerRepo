@@ -1,0 +1,44 @@
+
+{% extends "estudiante/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    AMCE - {{ grupo.grupo }}
+{% endblock %}
+
+{% block header_ctxt %}
+<div class="navbar-brand"> Mis Actividades <p class="small-text">{{ grupo.codigo_materia.materia}}</p></div>
+<a></a>
+<a></a>
+{% endblock %}
+
+{% block content %}
+<br>
+<center> <div style="content:center; font-size: 30px"> {{grupo.grupo}} | {{grupo.materia}} </div></center>
+    <div class="container px-4 px-lg-5 mt-5">
+<!--Aqui se deben de agregar los datos de la materia el chico-->
+{% for tem in temas %}
+
+    <div class="w3-container">
+    <a href="{% url 'AMCE:PaginaActividadAlumno' tema=tem.nombre codigo=codigo %}">
+    <div class="w3-card-4" style="width:70% content:center;">
+    <header class="w3-container w3-light-grey">
+            <br>
+                <center><h3>{{tem.nombre}}</h3></center>
+            <br>
+    </header>
+    <div class="w3-container">
+    </div>
+
+    <!--<button class="w3-button w3-block w3-dark-grey">+ Connect</button>-->
+  </div>
+    </a>
+</div>
+<br>
+<br>
+   {% endfor %}
+
+        </div>
+    </div>
+{% endblock content %}

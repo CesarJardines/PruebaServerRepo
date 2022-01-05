@@ -1,0 +1,49 @@
+
+{% extends "estudiante/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    AMCE - {{ grupo.grupo }}
+{% endblock %}
+
+{% block header_ctxt %}
+<div class="navbar-brand"> Retroalimentación <p class="small-text">{{ grupo.codigo_materia.materia}}</p></div>
+<a></a>
+<a></a>
+{% endblock %}
+
+{% block content %}
+{% for post in hace_equipo reversed %}
+<article>
+    
+        <div class="w3-container">
+            <form method="post" action="#">
+                <input type="radio" id="inicia" name="preguntaInicial" value="{{post.id_actividad.user_id}}">
+                <div class="w3-card-4" style="width:70% content:center;">
+                <header class="w3-container w3-light-grey">
+                    <br>
+                        <h3>{{post.id_actividad.user.username}}</h3>
+                        <p>{{post.id_actividad.hora}}</p>
+                    <br>
+                    <br>
+                </header>
+                <br>
+                <div class="w3-container">
+                    <h5>{{post.id_actividad.contenido}}</h5>
+                </div>
+                <br>
+                </div>
+            </form>
+        </div>
+
+        
+</article>
+{% endfor %}
+<br>
+<br>
+<div align="right"><input type="submit" value="Votar" id="myBtn"></div>
+<br>
+<br>
+<br>
+{% endblock content %}

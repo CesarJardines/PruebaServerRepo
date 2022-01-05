@@ -1,0 +1,28 @@
+
+{% extends "estudiante/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    AMCE - Actividad
+{% endblock %}
+
+{% block header_ctxt %}
+<div class="navbar-brand"> Mi investigación <p class="small-text"></p></div>
+<a></a>
+<a></a>
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<center style="content:center; font-size: 30px">
+    <h1>{{tema}}</h1>
+    <h3>Fase</h3>
+    <h4>{{asignar.id_equipo.nombre}}</h4>
+    <br>
+    <a href="{% url 'AMCE:postPreguntaInicial' tema=tema codigo=codigo %}">
+    	<button  id="temas-tab" data-bs-toggle="tab" data-bs-target="#temas" type="button" role="tab"  aria-selected="true">Empezar actividad</button>
+	</a>
+</center>
+{% endblock content %}

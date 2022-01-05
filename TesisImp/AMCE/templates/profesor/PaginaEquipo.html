@@ -1,0 +1,31 @@
+
+{% extends "profesor/base_mainpage.html" %}
+
+{% load static %}
+
+
+{% block title %}
+    AMCE - {{ equipo_nombre }}
+{% endblock %}
+
+{% block header_ctxt %}
+    <div class="nav-bar-title navbar-brand">{{ equipo_nombre }}</div>
+    <a class=""></a>
+{% endblock %}
+
+{% block navbar_ctxt %}
+    <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'AMCE:ProfMisGrupos' %}">Mis Grupos</a></li>
+    <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'AMCE:ProfMisTemas' %}">Mis Temas</a></li>
+{% endblock %}
+
+{% block inner_content %}
+    <h3>Integrantes:</h3>
+    </br>
+    <!--integrantes-->
+    {% for i in integrantes %}
+    <div>
+        <h4>{{ i }}</h4>
+    </div>
+    </br>
+    {% endfor %}
+{% endblock %}
